@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ploomes.API", "Ploomes.API\Ploomes.API.csproj", "{930B89F1-6F4A-4FBD-AF5D-C262560FB054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ploomes.Application", "Ploomes.Application\Ploomes.Application.csproj", "{A2BD9F35-1358-4DCE-8C4F-2C4B98F3D6DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{930B89F1-6F4A-4FBD-AF5D-C262560FB054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{930B89F1-6F4A-4FBD-AF5D-C262560FB054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{930B89F1-6F4A-4FBD-AF5D-C262560FB054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{930B89F1-6F4A-4FBD-AF5D-C262560FB054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BD9F35-1358-4DCE-8C4F-2C4B98F3D6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BD9F35-1358-4DCE-8C4F-2C4B98F3D6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BD9F35-1358-4DCE-8C4F-2C4B98F3D6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BD9F35-1358-4DCE-8C4F-2C4B98F3D6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ACD00E8-1671-4A86-A0B0-2CF525CA7547}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ploomes.API</name>
+    </assembly>
+    <members>
+        <member name="T:Ploomes.API.Attributes.BearerAuthorizeAttribute">
+            <summary>
+            Atributo customizado para o esquema Bearer.
+            </summary>
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.BuyerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
+            <summary>Cria um novo usuário com acesso do tipo comprador.</summary>
+        </member>
+        <member name="T:Ploomes.API.Controllers.v1.DefaultController">
+            <summary>
+            Controle padrão com métodos e propriedades de auxílios.
+            </summary>
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.DefaultController.ConvertData(Ploomes.Application.Shared.IResultData)">
+            <summary>
+            Converte o tipo de dado recebido pelo serviço em um IActionResult válido
+            a ser enviado como resposta do controle.
+            </summary>        
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
+            <summary>Cria um novo usuário com acesso do tipo vendedor.</summary>
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.SellerController.SetSeller(System.Guid)">
+            <summary>Define o nível de acesso de um usuário como vendedor.</summary>
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.Guid)">
+            <summary>Obtém um usuário por seu uid.</summary>
+        </member>
+        <member name="T:Ploomes.API.Extensions.ServiceCollectionJwtExtensions">
+            <summary>Extensões para autenticação JWT como serviço.</summary>
+        </member>
+        <member name="M:Ploomes.API.Extensions.ServiceCollectionRepositoryExtensions.AddAppRepositories(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>Adiciona os repositórios da aplicação aos serviços.</summary>
+        </member>
+        <member name="M:Ploomes.API.Extensions.ServiceCollectionServiceExtensions.AddAppServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>Adiciona os serviços da aplicação a coleção de serviços.</summary>
+        </member>
+    </members>
+</doc>

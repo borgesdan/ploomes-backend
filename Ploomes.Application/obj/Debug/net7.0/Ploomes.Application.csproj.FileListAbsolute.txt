@@ -1,0 +1,12 @@
+C:\dev\tests\ploomes-project\Ploomes.Application\bin\Debug\net7.0\Ploomes.Application.deps.json
+C:\dev\tests\ploomes-project\Ploomes.Application\bin\Debug\net7.0\Ploomes.Application.dll
+C:\dev\tests\ploomes-project\Ploomes.Application\bin\Debug\net7.0\Ploomes.Application.pdb
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.csproj.AssemblyReference.cache
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.AssemblyInfoInputs.cache
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.AssemblyInfo.cs
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.csproj.CoreCompileInputs.cache
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.dll
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\refint\Ploomes.Application.dll
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\Ploomes.Application.pdb
+C:\dev\tests\ploomes-project\Ploomes.Application\obj\Debug\net7.0\ref\Ploomes.Application.dll
