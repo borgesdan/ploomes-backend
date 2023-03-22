@@ -7,5 +7,6 @@
         public double Discount { get; set; }
         public string? Description { get; set; }
         public string? SellerUid { get; set; }
+        public int Count { get; set; }
     }
 }

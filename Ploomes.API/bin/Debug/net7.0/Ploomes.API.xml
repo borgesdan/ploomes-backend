@@ -12,6 +12,9 @@
         <member name="M:Ploomes.API.Controllers.v1.BuyerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
             <summary>Cria um novo usuário com acesso do tipo comprador.</summary>
         </member>
+        <member name="M:Ploomes.API.Controllers.v1.BuyerController.CreateOrder(Ploomes.Application.Contracts.BuyerPostCreateOrderRequest)">
+            <summary>Cria um pedido de compra de um produto.</summary>
+        </member>
         <member name="T:Ploomes.API.Controllers.v1.DefaultController">
             <summary>
             Controle padrão com métodos e propriedades de auxílios.
@@ -33,10 +36,10 @@
             <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.GetAllProduct(System.String)">
-            <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
+            <summary>Obtém todos os produtos de um vendedor.</summary>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.HideProduct(System.String,System.String)">
-            <summary>Muda a visibilidade de um produto para que não seja exibido na plataforma.</summary>
+            <summary>Atualiza a visibilidade de um produto para que não seja exibido na plataforma.</summary>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.String)">
             <summary>Obtém um usuário por seu uid.</summary>
@@ -87,6 +90,18 @@
             <inheritdoc />
         </member>
         <member name="M:Ploomes.API.Migrations.EntityStatus.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Ploomes.API.Migrations.ProductCount">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.ProductCount.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.ProductCount.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.ProductCount.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

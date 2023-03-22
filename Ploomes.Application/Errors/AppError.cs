@@ -58,6 +58,9 @@
 
             public static ErrorValue NotFound
                => new("prod_005", "O produto informado não foi encontrado.");
+
+            public static ErrorValue StockExceeded
+               => new("prod_006", "O produto não tem estoque suficiente para a quantidade informada.");
         }
     }
 }

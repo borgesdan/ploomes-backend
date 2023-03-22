@@ -12,10 +12,12 @@ namespace Ploomes.API.Controllers.v1
     public class BuyerController : DefaultController
     {
         private readonly UserService _userService;
+        private readonly BuyerService _buyerService;
 
-        public BuyerController(UserService userService)
+        public BuyerController(UserService userService, BuyerService buyerService)
         {
             _userService = userService;
+            _buyerService = buyerService;
         }
 
         /// <summary>Cria um novo usuário com acesso do tipo comprador.</summary>
@@ -23,5 +25,10 @@ namespace Ploomes.API.Controllers.v1
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserPostRequest request)
             => ConvertData(await _userService.CreateAsync(request, AccessLevelType.Buyer));
+
+        /// <summary>Cria um pedido de compra de um produto.</summary>
+        [HttpPost("order")]
+        public async Task<IActionResult> CreateOrder([FromBody] BuyerPostCreateOrderRequest request)
+            => ConvertData(await _buyerService.CreateOrder(request));
     }
 }

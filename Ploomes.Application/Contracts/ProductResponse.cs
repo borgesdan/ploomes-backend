@@ -9,6 +9,7 @@ namespace Ploomes.Application.Contracts
         public decimal Price { get; set; }
         public double Discount { get; set; }
         public string? Description { get; set; }
+        public int Count { get; set; }
 
         public ProductResponse(ProductEntity entity)
         {
@@ -17,6 +18,7 @@ namespace Ploomes.Application.Contracts
             Discount = entity.Discount;
             Description = entity.Description;
             Uid = entity.Uid.ToString().ToLower();
+            Count = entity.Stock;
         }
     }
 }

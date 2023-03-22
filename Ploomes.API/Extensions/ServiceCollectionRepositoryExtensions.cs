@@ -10,6 +10,8 @@ namespace Ploomes.API.Extensions
             services.AddScoped<UserRepository>();
             services.AddScoped<ProductRepository>();
             services.AddScoped<SellerRepository>();
+            services.AddScoped<BuyerRepository>();
+            services.AddScoped<OrderRepository>();
             return services;
         }
     }

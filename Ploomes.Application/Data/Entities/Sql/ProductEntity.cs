@@ -25,6 +25,9 @@ namespace Ploomes.Application.Data.Entities.Sql
         [Range(0.0, 1.0)]
         public double Discount { get; set; }
 
+        [Range(0, 9999)]
+        public int Stock { get; set; }
+
         [Required]
         [StringLength(5000)]
         public string? Description { get; set; }

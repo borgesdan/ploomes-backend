@@ -27,22 +27,22 @@ namespace Ploomes.API.Controllers.v1
             => ConvertData(await _userService.CreateAsync(request, AccessLevelType.Seller));
 
         /// <summary>Define o nível de acesso de um usuário como vendedor.</summary>
-        [HttpPost("level/{sellerUid}")]
-        public async Task<IActionResult> SetSeller(string sellerUid)
-            => ConvertData(await _userService.SetAsSeller(sellerUid));
+        [HttpPost("asseller/{userId}")]
+        public async Task<IActionResult> SetSeller(string userId)
+            => ConvertData(await _userService.SetAsSeller(userId));
 
         /// <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
         [HttpPost("product")]
         public async Task<IActionResult> PublishProduct([FromBody] SellerPostProductRequest request)
             => ConvertData(await _sellerService.PublishProductAsync(request));
 
-        /// <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
-        [HttpGet("product/all/{sellerUid}")]
+        /// <summary>Obtém todos os produtos de um vendedor.</summary>
+        [HttpGet("{sellerUid}/product/all/")]
         public async Task<IActionResult> GetAllProduct(string sellerUid)
             => ConvertData(await _sellerService.GetAllProductsAsync(sellerUid));
 
-        /// <summary>Muda a visibilidade de um produto para que não seja exibido na plataforma.</summary>
-        [HttpPatch("product/hidden/{sellerUid}/{productUid}")]
+        /// <summary>Atualiza a visibilidade de um produto para que não seja exibido na plataforma.</summary>
+        [HttpPatch("{sellerUid}/product/hidden/{productUid}")]
         public async Task<IActionResult> HideProduct(string sellerUid, string productUid)
             => ConvertData(await _sellerService.HideProduct(sellerUid, productUid));
     }
