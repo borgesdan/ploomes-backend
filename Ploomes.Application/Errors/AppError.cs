@@ -30,18 +30,31 @@
 
             public static ErrorValue UserNotFound
                 => new("user_007", "O usuário especificado não foi encontrado.");
+
+            public static ErrorValue InvalidPermission
+                => new("user_008", "Permissão inválida para prosseguir com a ação.");
         }
 
-        public class Advertisement
+        public class Seller
+        {            
+        }
+
+        public class Product
         {
             public static ErrorValue TitleNotInformed
-                => new("ad_000", "O título deve ser informado.");
+                => new("prod_000", "O título deve ser informado.");
 
             public static ErrorValue DescriptionNotInformed
-                => new("ad_001", "A descrição deve ser informada.");
+                => new("prod_001", "A descrição deve ser informada.");
 
             public static ErrorValue DiscountCannotBeNegative
-                => new("ad_002", "O desconto não pode ter um valor negativo");
+                => new("prod_002", "O desconto não pode ter um valor negativo");
+
+            public static ErrorValue PriceCannotBeZeroOrNegative
+                => new("prod_0023", "O anúncio precisa ter um preço válido.");
+
+            public static ErrorValue DiscountCannotBeGreaterThen
+               => new("prod_002", "O desconto não pode ser maior que 90%");
         }
     }
 }

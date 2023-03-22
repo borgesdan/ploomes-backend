@@ -81,12 +81,56 @@
             return this;
         }
 
-        /// <summary>Verifica se número é menor que zero.</summary>
-        public FlowValidator<T> IsNegative(int value)
+        /// <summary>Verifica se um inteiro é menor que zero.</summary>
+        public FlowValidator<T> IsNegative(long value)
         {
             _validateAction += () =>
             {
                 _hasErrors = value < 0;
+            };
+
+            return this;
+        }
+
+        /// <summary>Verifica se um inteiro é menor que zero.</summary>
+        public FlowValidator<T> IsZeroOrNegative(long value)
+        {
+            _validateAction += () =>
+            {
+                _hasErrors = value < 0;
+            };
+
+            return this;
+        }
+
+        /// <summary>Verifica se um inteiro é menor que zero.</summary>
+        public FlowValidator<T> IsZeroOrNegative(decimal value)
+        {
+            _validateAction += () =>
+            {
+                _hasErrors = value < 0;
+            };
+
+            return this;
+        }
+
+        /// <summary>Verifica se número é menor que zero.</summary>
+        public FlowValidator<T> IsNegative(double value)
+        {
+            _validateAction += () =>
+            {
+                _hasErrors = value <= 0.0;
+            };
+
+            return this;
+        }
+
+        /// <summary>Verifica se número é menor que zero.</summary>
+        public FlowValidator<T> IsZeroOrNegative(double value)
+        {
+            _validateAction += () =>
+            {
+                _hasErrors = value <= 0.0;
             };
 
             return this;

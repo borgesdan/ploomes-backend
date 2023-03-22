@@ -2,8 +2,10 @@
 using Ploomes.Application.Contracts;
 using Ploomes.Application.Data.Entities.Sql;
 using Ploomes.Application.Data.Shared;
+using Ploomes.Application.Errors;
 using Ploomes.Application.Repositories;
 using Ploomes.Application.Shared;
+using Ploomes.Application.Validations;
 
 namespace Ploomes.Application.Services
 {
@@ -21,13 +23,18 @@ namespace Ploomes.Application.Services
         /// <summary>Publica um novo produto ou anúncio de um vendedor.</summary>
         public async Task<IResultData> PublishProductAsync(SellerPostProductRequest request)
         {
+            var validation = new SellerPublishProductValidator(request);
+
+            if(!validation.Validate())
+                return ResultData.Error(validation.Errors.First());
+
             var user = await _userRepository.GetByUidAsync(request.SellerUid);
 
             if (user == null)
-                return ResultData.Error("");
+                return ResultData.Error(AppError.User.UserNotFound.Message);
 
             if (!AccessLevelReader.IsSeller(user.AccessLevel))
-                return ResultData.Error("");
+                return ResultData.Error(AppError.User.InvalidPermission.Message);
 
             var product = new ProductEntity
             {
@@ -52,10 +59,10 @@ namespace Ploomes.Application.Services
             var user = await _userRepository.GetByUidAsync(sellerUid);
 
             if (user == null)
-                return ResultData.Error("");
+                return ResultData.Error(AppError.User.UserNotFound.Message);
 
             if (!AccessLevelReader.IsSeller(user.AccessLevel))
-                return ResultData.Error("");
+                return ResultData.Error(AppError.User.InvalidPermission.Message);
 
             var products = await _productRepository.GetAll(user.Id);
 
