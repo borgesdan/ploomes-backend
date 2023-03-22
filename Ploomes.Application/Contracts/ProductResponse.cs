@@ -16,7 +16,7 @@ namespace Ploomes.Application.Contracts
             Price = entity.Price;
             Discount = entity.Discount;
             Description = entity.Description;
-            Uid = entity.Uid.ToString();
+            Uid = entity.Uid.ToString().ToLower();
         }
     }
 }

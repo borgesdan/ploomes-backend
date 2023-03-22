@@ -25,6 +25,8 @@ namespace Ploomes.Application.Data.Entities.Sql
         [Required]
         public DateTime CreationDate { get; set; }
 
+        public EntityStatus Status { get; set; }
+
         public virtual PersonEntity? Person { get; set; }
 
         public UserEntity()

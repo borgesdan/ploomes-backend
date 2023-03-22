@@ -28,7 +28,7 @@
             public static ErrorValue InvalidPermissionToCreateUser
                 => new("user_005", "Somente administradores com privilégios podem criar outros administradores.");
 
-            public static ErrorValue UserNotFound
+            public static ErrorValue NotFound
                 => new("user_007", "O usuário especificado não foi encontrado.");
 
             public static ErrorValue InvalidPermission
@@ -51,10 +51,13 @@
                 => new("prod_002", "O desconto não pode ter um valor negativo");
 
             public static ErrorValue PriceCannotBeZeroOrNegative
-                => new("prod_0023", "O anúncio precisa ter um preço válido.");
+                => new("prod_003", "O anúncio precisa ter um preço válido.");
 
             public static ErrorValue DiscountCannotBeGreaterThen
-               => new("prod_002", "O desconto não pode ser maior que 90%");
+               => new("prod_004", "O desconto não pode ser maior que 90%");
+
+            public static ErrorValue NotFound
+               => new("prod_005", "O produto informado não foi encontrado.");
         }
     }
 }

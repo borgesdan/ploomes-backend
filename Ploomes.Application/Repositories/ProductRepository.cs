@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ploomes.Application.Data.Context;
 using Ploomes.Application.Data.Entities.Sql;
+using Ploomes.Application.Data.Shared;
 
 namespace Ploomes.Application.Repositories
 {
@@ -18,7 +19,10 @@ namespace Ploomes.Application.Repositories
             return product;
         }
 
-        public async Task<List<ProductEntity>> GetAll(int sellerId)
-            => await _context.Products.Where(p => p.SellerId == sellerId).ToListAsync();
+        public async Task<List<ProductEntity>> GetAllAsync(int sellerId)
+            => await _context.Products.Where(p => p.SellerId == sellerId && p.Status == EntityStatus.Active).ToListAsync();
+
+        public async Task<ProductEntity?> GetByUidAsync(string uid)
+            => await _context.Products.Where(p => p.Uid == new Guid(uid)).FirstOrDefaultAsync();
     }
 }

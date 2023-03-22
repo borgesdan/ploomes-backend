@@ -92,7 +92,7 @@ namespace Ploomes.Application.Services
             var user = await _userRepository.GetByUidAsync(uid);
 
             if (user == null)
-                return ResultData.Error(AppError.User.UserNotFound);
+                return ResultData.Error(AppError.User.NotFound);
 
             if (user.AccessLevel == AccessLevelType.Buyer)
                 return new ResultData(true, null, HttpStatusCode.NoContent);
@@ -109,7 +109,7 @@ namespace Ploomes.Application.Services
             var user = await _userRepository.GetByUidAsync(uid, true);
 
             if (user == null)
-                return ResultData.Error(AppError.User.UserNotFound);
+                return ResultData.Error(AppError.User.NotFound);
 
             return ResultData.Ok(new UserGetByUidResponse(user));
         }

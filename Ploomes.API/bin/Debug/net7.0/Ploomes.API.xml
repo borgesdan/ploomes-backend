@@ -35,6 +35,9 @@
         <member name="M:Ploomes.API.Controllers.v1.SellerController.GetAllProduct(System.String)">
             <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
         </member>
+        <member name="M:Ploomes.API.Controllers.v1.SellerController.HideProduct(System.String,System.String)">
+            <summary>Muda a visibilidade de um produto para que não seja exibido na plataforma.</summary>
+        </member>
         <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.String)">
             <summary>Obtém um usuário por seu uid.</summary>
         </member>
@@ -72,6 +75,18 @@
             <inheritdoc />
         </member>
         <member name="M:Ploomes.API.Migrations.RenameProduct.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Ploomes.API.Migrations.EntityStatus">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.EntityStatus.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.EntityStatus.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.EntityStatus.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

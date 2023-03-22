@@ -40,5 +40,10 @@ namespace Ploomes.API.Controllers.v1
         [HttpGet("product/all/{sellerUid}")]
         public async Task<IActionResult> GetAllProduct(string sellerUid)
             => ConvertData(await _sellerService.GetAllProductsAsync(sellerUid));
+
+        /// <summary>Muda a visibilidade de um produto para que não seja exibido na plataforma.</summary>
+        [HttpPatch("product/hidden/{sellerUid}/{productUid}")]
+        public async Task<IActionResult> HideProduct(string sellerUid, string productUid)
+            => ConvertData(await _sellerService.HideProduct(sellerUid, productUid));
     }
 }

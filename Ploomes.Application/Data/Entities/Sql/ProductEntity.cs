@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Ploomes.Application.Data.Shared;
 
 namespace Ploomes.Application.Data.Entities.Sql
 {
@@ -30,6 +31,8 @@ namespace Ploomes.Application.Data.Entities.Sql
 
         [ForeignKey(nameof(User))]
         public int SellerId { get; set; }
+
+        public EntityStatus Status { get; set; }
 
         public virtual UserEntity? User { get; set; }
 

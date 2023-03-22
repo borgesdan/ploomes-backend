@@ -31,7 +31,7 @@ namespace Ploomes.Application.Services
             var user = await _userRepository.GetByUidAsync(request.SellerUid);
 
             if (user == null)
-                return ResultData.Error(AppError.User.UserNotFound.Message);
+                return ResultData.Error(AppError.User.NotFound.Message);
 
             if (!AccessLevelReader.IsSeller(user.AccessLevel))
                 return ResultData.Error(AppError.User.InvalidPermission.Message);
@@ -47,10 +47,7 @@ namespace Ploomes.Application.Services
 
             await _productRepository.Create(product);
 
-            return ResultData.Ok(new SellerPostProductResponse() 
-            { 
-                ProductUid = product.Uid.ToString() 
-            });
+            return ResultData.Ok(new SellerPostProductResponse(product.Uid));
         }
 
         /// <summary>Obtém todos os produtos de um vendedor.</summary>
@@ -59,17 +56,38 @@ namespace Ploomes.Application.Services
             var user = await _userRepository.GetByUidAsync(sellerUid);
 
             if (user == null)
-                return ResultData.Error(AppError.User.UserNotFound.Message);
+                return ResultData.Error(AppError.User.NotFound.Message);
 
             if (!AccessLevelReader.IsSeller(user.AccessLevel))
                 return ResultData.Error(AppError.User.InvalidPermission.Message);
 
-            var products = await _productRepository.GetAll(user.Id);
+            var products = await _productRepository.GetAllAsync(user.Id);
 
             return ResultData.Ok(new SellerGetAllProductsResponse()
             {
                 Products = products.Select(p => new ProductResponse(p)).ToList(),
             });
+        }
+
+        /// <summary>Muda a visibilidade de um produto para que não seja exibido na plataforma.</summary>
+        public async Task<IResultData> HideProduct(string sellerUid, string productUid)
+        {
+            var user = await _userRepository.GetByUidAsync(sellerUid);
+
+            if (user == null)
+                return ResultData.Error(AppError.User.NotFound.Message);
+
+            if (!AccessLevelReader.IsSeller(user.AccessLevel))
+                return ResultData.Error(AppError.User.InvalidPermission.Message);
+
+            var product = await _productRepository.GetByUidAsync(productUid);
+
+            if (product == null)
+                return ResultData.Error(AppError.Product.NotFound.Message);
+
+            product.Status = EntityStatus.Hidden;
+
+            return ResultData.Ok();
         }
     }
 }
