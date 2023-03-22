@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ploomes.Application.Data.Context;
 using Ploomes.Application.Data.Entities.Sql;
+using System.Linq.Expressions;
 
 namespace Ploomes.Application.Repositories
 {
@@ -9,6 +10,9 @@ namespace Ploomes.Application.Repositories
         public UserRepository(AppDbContext context) : base(context)
         {
         }
+
+        public async Task<UserEntity?> Get(Expression<Func<UserEntity, bool>> predicate)
+            => await _context.Users.Where(predicate).FirstOrDefaultAsync();
 
         public async Task<UserEntity?> GetByUidAsync(string uid, bool includePerson = false)
         {
@@ -21,9 +25,7 @@ namespace Ploomes.Application.Repositories
         }
 
         public async Task<UserEntity?> GetByLogin(string email, string password)
-            => await _context.Users.Where(u =>
-                (u.PrimaryLogin == email || u.SecondaryLogin == email) && u.Password == password)                
-                .FirstOrDefaultAsync();
+            => await _context.Users.Where(u => u.Email == email && u.Password == password).FirstOrDefaultAsync();
 
         public async Task Update(UserEntity entity)
         {

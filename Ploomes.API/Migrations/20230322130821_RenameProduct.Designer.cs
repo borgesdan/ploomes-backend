@@ -12,8 +12,8 @@ using Ploomes.Application.Data.Context;
 namespace Ploomes.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230322003158_First")]
-    partial class First
+    [Migration("20230322130821_RenameProduct")]
+    partial class RenameProduct
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,13 +33,14 @@ namespace Ploomes.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Document")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<Guid>("Uid")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -52,7 +53,7 @@ namespace Ploomes.API.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("Ploomes.Application.Data.Entities.Sql.SellerItem", b =>
+            modelBuilder.Entity("Ploomes.Application.Data.Entities.Sql.ProductEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +87,7 @@ namespace Ploomes.API.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("sellerItems");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Ploomes.Application.Data.Entities.Sql.UserEntity", b =>
@@ -103,17 +104,13 @@ namespace Ploomes.API.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PrimaryLogin")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("SecondaryLogin")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -136,15 +133,15 @@ namespace Ploomes.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Ploomes.Application.Data.Entities.Sql.SellerItem", b =>
+            modelBuilder.Entity("Ploomes.Application.Data.Entities.Sql.ProductEntity", b =>
                 {
-                    b.HasOne("Ploomes.Application.Data.Entities.Sql.PersonEntity", "Person")
+                    b.HasOne("Ploomes.Application.Data.Entities.Sql.UserEntity", "User")
                         .WithMany()
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Person");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Ploomes.Application.Data.Entities.Sql.UserEntity", b =>

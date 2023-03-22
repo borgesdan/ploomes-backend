@@ -7,7 +7,7 @@ namespace Ploomes.Application.Data.Context
     {
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<PersonEntity> Persons { get; set; }
-        public DbSet<SellerItem> sellerItems { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {

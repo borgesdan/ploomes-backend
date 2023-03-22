@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ploomes.Application.Data.Entities.Sql
 {
-    /// <summary>Representa um item de venda (qualquer tipo de anúncio) de um usuário cadastrado como vendedor.</summary>
-    public class SellerItem
+    /// <summary>Representa um produto de venda (qualquer tipo de anúncio) de um usuário cadastrado como vendedor.</summary>
+    public class ProductEntity
     {
         [Key]
         public int Id { get; set; }
@@ -28,9 +28,14 @@ namespace Ploomes.Application.Data.Entities.Sql
         [StringLength(5000)]
         public string? Description { get; set; }
 
-        [ForeignKey(nameof(Person))]
+        [ForeignKey(nameof(User))]
         public int SellerId { get; set; }
 
-        public virtual PersonEntity? Person { get; set; }
+        public virtual UserEntity? User { get; set; }
+
+        public ProductEntity()
+        {
+            Uid = Guid.NewGuid();
+        }
     }
 }

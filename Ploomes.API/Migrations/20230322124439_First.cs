@@ -18,8 +18,7 @@ namespace Ploomes.API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Uid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PrimaryLogin = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    SecondaryLogin = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     AccessLevel = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -35,9 +34,9 @@ namespace Ploomes.API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Uid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Document = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,9 +66,9 @@ namespace Ploomes.API.Migrations
                 {
                     table.PrimaryKey("PK_sellerItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_sellerItems_Persons_SellerId",
+                        name: "FK_sellerItems_Users_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "Persons",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -90,10 +89,10 @@ namespace Ploomes.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "sellerItems");
+                name: "Persons");
 
             migrationBuilder.DropTable(
-                name: "Persons");
+                name: "sellerItems");
 
             migrationBuilder.DropTable(
                 name: "Users");

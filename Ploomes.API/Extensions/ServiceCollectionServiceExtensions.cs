@@ -8,6 +8,7 @@ namespace Ploomes.API.Extensions
         public static IServiceCollection AddAppServices(this IServiceCollection services)
         {
             services.AddScoped<UserService>();
+            services.AddScoped<SellerService>();
             return services;
         }
     }

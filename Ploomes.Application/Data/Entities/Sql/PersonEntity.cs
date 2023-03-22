@@ -9,21 +9,16 @@ namespace Ploomes.Application.Data.Entities.Sql
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public Guid Uid { get; set; }
-
         [ForeignKey("User")]
         public int UserId { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string? Name { get; set; }
+        public string? FullName { get; set; }
+
+        [StringLength(50)]
+        public string? Document { get; set; }
 
         public virtual UserEntity? User { get; set; }        
-
-        public PersonEntity()
-        {
-            Uid = Guid.NewGuid();
-        }
     }
 }

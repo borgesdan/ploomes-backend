@@ -13,10 +13,7 @@ namespace Ploomes.Application.Data.Entities.Sql
 
         [Required]
         [StringLength(256)]
-        public string? PrimaryLogin { get; set; }
-
-        [StringLength(256)]
-        public string? SecondaryLogin { get; set; }
+        public string? Email { get; set; }
 
         [Required]
         [StringLength(256)]

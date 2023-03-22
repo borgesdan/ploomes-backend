@@ -34,6 +34,11 @@ namespace Ploomes.Application.Services
             if (!validation.Validate())
                 return ResultData.Error(validation.Errors.First());
 
+            var emailUser = await _userRepository.Get(u => u.Email == request.Email);
+
+            if (emailUser != null)
+                return ResultData.Error(AppError.User.AlreadyExistingEmail.Message);
+
             var result = await CreateTransactionAsync(request, accessLevel);
 
             if (!result.Succeeded)
@@ -55,7 +60,7 @@ namespace Ploomes.Application.Services
                 {
                     AccessLevel = accessLevel,
                     CreationDate = DateTime.UtcNow,
-                    PrimaryLogin = request.Email,
+                    Email = request.Email,
                     Password = SecurityHelper.CreateHash(request.Password),
                 };
 
@@ -63,7 +68,7 @@ namespace Ploomes.Application.Services
 
                 var person = new PersonEntity
                 {
-                    Name = request.UserName,
+                    FullName = request.UserName,
                     UserId = user.Id,
                 };
 
