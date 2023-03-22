@@ -19,6 +19,14 @@ namespace Ploomes.Application.Repositories
             return product;
         }
 
+        public async Task<ProductEntity> Update(ProductEntity product)
+        {
+            _context.Update(product);
+            await _context.SaveChangesAsync();
+
+            return product;
+        }
+
         public async Task<List<ProductEntity>> GetAllAsync(int sellerId)
             => await _context.Products.Where(p => p.SellerId == sellerId && p.Status == EntityStatus.Active).ToListAsync();
 

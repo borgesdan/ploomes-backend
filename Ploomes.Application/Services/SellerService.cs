@@ -86,6 +86,7 @@ namespace Ploomes.Application.Services
                 return ResultData.Error(AppError.Product.NotFound.Message);
 
             product.Status = EntityStatus.Hidden;
+            await _productRepository.Update(product);
 
             return ResultData.Ok();
         }
