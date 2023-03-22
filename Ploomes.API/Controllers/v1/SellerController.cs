@@ -26,7 +26,7 @@ namespace Ploomes.API.Controllers.v1
 
         /// <summary>Define o nível de acesso de um usuário como vendedor.</summary>
         [HttpPost("changelevel/{uid}")]
-        public async Task<IActionResult> SetSeller(Guid uid)
+        public async Task<IActionResult> SetSeller(string uid)
             => ConvertData(await _userService.SetAsSeller(uid));
     }
 }

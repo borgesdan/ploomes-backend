@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 
@@ -8,16 +9,15 @@ namespace Ploomes.API.Extensions
     {
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services, AssemblyName applicationName, bool useAuthorization)
         {
-            AssemblyName applicationName2 = applicationName;
-            services.AddSwaggerGen(delegate (SwaggerGenOptions options)
+            services.AddSwaggerGen (options =>
             {
-                SetupSwaggerDoc(options, applicationName2);
+                SetupSwaggerDoc(options, applicationName);
                 if (useAuthorization)
                 {
                     SetupSwaggerAuthorizationDoc(options);
                 }
 
-                string path = applicationName2.Name + ".xml";
+                string path = applicationName.Name + ".xml";
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, path));
                 //options.OperationFilter<CustomErrorsOperationFilter>(Array.Empty<object>());
                 //options.SchemaFilter<CustomDefinitionSchemaFilter>(Array.Empty<object>());
@@ -52,7 +52,7 @@ namespace Ploomes.API.Extensions
                 },
                 BearerFormat = "JWT",
                 In = ParameterLocation.Header,
-                Description = "Por favor insira no campo o token JWT com Bearer (BEARER <mytoken>).",
+                Description = "Por favor insira no campo value o token JWT com Bearer: \"BEARER mytoken...\"",
                 Name = "Authorization",
                 Type = SecuritySchemeType.ApiKey,
                 Scheme = "oauth2"

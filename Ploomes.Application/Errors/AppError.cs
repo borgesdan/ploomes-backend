@@ -27,6 +27,9 @@
 
             public static ErrorValue InvalidPermissionToCreateUser
                 => new("user_005", "Somente administradores com privilégios podem criar outros administradores.");
+
+            public static ErrorValue UserNotFound
+                => new("user_007", "O usuário especificado não foi encontrado.");
         }
 
         public class Advertisement

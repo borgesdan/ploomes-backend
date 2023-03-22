@@ -10,9 +10,9 @@ namespace Ploomes.Application.Repositories
         {
         }
 
-        public async Task<UserEntity?> GetByUidAsync(Guid uid, bool includePerson = false)
+        public async Task<UserEntity?> GetByUidAsync(string uid, bool includePerson = false)
         {
-            var query = _context.Users.Where(u => u.Uid == uid);
+            var query = _context.Users.Where(u => u.Uid == new Guid(uid));
 
             if (includePerson)
                 query = query.Include(u => u.Person);
@@ -20,6 +20,10 @@ namespace Ploomes.Application.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
+        public async Task<UserEntity?> GetByLogin(string email, string password)
+            => await _context.Users.Where(u =>
+                (u.PrimaryLogin == email || u.SecondaryLogin == email) && u.Password == password)                
+                .FirstOrDefaultAsync();
 
         public async Task Update(UserEntity entity)
         {

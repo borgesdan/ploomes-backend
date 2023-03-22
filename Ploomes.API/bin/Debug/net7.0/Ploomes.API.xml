@@ -26,11 +26,14 @@
         <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
             <summary>Cria um novo usuário com acesso do tipo vendedor.</summary>
         </member>
-        <member name="M:Ploomes.API.Controllers.v1.SellerController.SetSeller(System.Guid)">
+        <member name="M:Ploomes.API.Controllers.v1.SellerController.SetSeller(System.String)">
             <summary>Define o nível de acesso de um usuário como vendedor.</summary>
         </member>
-        <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.Guid)">
+        <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.String)">
             <summary>Obtém um usuário por seu uid.</summary>
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.UserController.Login(Ploomes.Application.Contracts.UserLoginRequest)">
+            <summary>Executa o login no sistema de um usuário cadastrado.</summary>
         </member>
         <member name="T:Ploomes.API.Extensions.ServiceCollectionJwtExtensions">
             <summary>Extensões para autenticação JWT como serviço.</summary>
@@ -40,6 +43,18 @@
         </member>
         <member name="M:Ploomes.API.Extensions.ServiceCollectionServiceExtensions.AddAppServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>Adiciona os serviços da aplicação a coleção de serviços.</summary>
+        </member>
+        <member name="T:Ploomes.API.Migrations.First">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.First.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.First.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.First.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

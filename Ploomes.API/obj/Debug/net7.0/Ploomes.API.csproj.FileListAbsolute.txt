@@ -74,3 +74,8 @@ C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\runtimes\win\lib\netst
 C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Ploomes.API.xml
 C:\dev\tests\ploomes-project\Ploomes.API\obj\Debug\net7.0\Ploomes.API.xml
+C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Humanizer.dll
+C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\System.CodeDom.dll

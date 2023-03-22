@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ploomes.Application.Data.Entities.Sql
 {
+    /// <summary>Representa as informações pessoais de um usuário cadastrado.</summary>
     public class PersonEntity
     {
         [Key]

@@ -9,17 +9,17 @@ var configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+var assemblyName = Assembly.GetExecutingAssembly().GetName();
+
+builder.Services.AddSwaggerDocumentation(assemblyName, true);
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         configuration.GetConnectionString("default"),
         //Como requisitado pelo Package Manager Console
-        b => b.MigrationsAssembly("Ploomes.API")));
-
-builder.Services.AddSwaggerDocumentation(Assembly.GetExecutingAssembly().GetName(), true);
+        b => b.MigrationsAssembly(assemblyName.Name)));
 
 builder.Services.AddJwtAuthentication(configuration);
 
