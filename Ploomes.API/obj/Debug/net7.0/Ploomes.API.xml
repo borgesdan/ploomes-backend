@@ -119,6 +119,28 @@
             a ser enviado como resposta do controle.
             </summary>        
         </member>
+        <member name="M:Ploomes.API.Controllers.v1.ProductController.GetAll(Ploomes.Application.Contracts.ProductGetAllFilterRequest)">
+             <summary>
+             Obtém todos os produtos cadastrados no sistema com paginação.
+             </summary>
+             <remarks>        
+             Exemplo de requisição:
+             <code>
+            {
+              "succeeded": true,
+              "message": null,
+              "data": {
+                "uid": "3f400aaa-7dab-4900-98ed-efd28bfa91ad",
+                "email": "user@email.com",
+                "accessLevel": 1,
+                "creationDate": "2023-03-22T21:15:23.748Z",
+                "name": "User Name dos Santos"
+              }
+            }        
+             </code>
+             Você precisa estar logado para utilizar esse endpoint.
+             </remarks>
+        </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
              <summary>Cria um novo usuário para acesso de compra e venda na plataforma.</summary>
              <remarks>

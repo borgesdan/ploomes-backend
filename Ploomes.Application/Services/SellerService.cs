@@ -44,7 +44,7 @@ namespace Ploomes.Application.Services
                 SellerId = user.Id
             };
 
-            await _productRepository.Create(product);
+            await _productRepository.CreateAsync(product);
 
             return ResultData.Ok(new SellerPostProductResponse(product.Uid));
         }
@@ -85,7 +85,7 @@ namespace Ploomes.Application.Services
                 return ResultData.Error(AppError.Product.NotFound.Message);
 
             product.Status = EntityStatus.Hidden;
-            await _productRepository.Update(product);
+            await _productRepository.UpdateAsync(product);
 
             return ResultData.Ok();
         }

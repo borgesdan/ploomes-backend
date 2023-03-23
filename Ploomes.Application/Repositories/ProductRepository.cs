@@ -11,7 +11,14 @@ namespace Ploomes.Application.Repositories
         {
         }
 
-        public async Task<ProductEntity> Create(ProductEntity product)
+        public async Task<List<ProductEntity>> GetAllAsync(int page, int pageSize)
+            => await _context.Products
+            .OrderBy(s => s.Title)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        public async Task<ProductEntity> CreateAsync(ProductEntity product)
         {
             _context.Add(product);
             await _context.SaveChangesAsync();
@@ -19,7 +26,7 @@ namespace Ploomes.Application.Repositories
             return product;
         }
 
-        public async Task<ProductEntity> Update(ProductEntity product)
+        public async Task<ProductEntity> UpdateAsync(ProductEntity product)
         {
             _context.Update(product);
             await _context.SaveChangesAsync();

@@ -10,6 +10,7 @@ namespace Ploomes.API.Extensions
             services.AddScoped<UserService>();
             services.AddScoped<SellerService>();
             services.AddScoped<BuyerService>();            
+            services.AddScoped<ProductService>();            
             return services;
         }
     }
