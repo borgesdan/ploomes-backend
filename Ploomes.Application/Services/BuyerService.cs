@@ -63,7 +63,9 @@ namespace Ploomes.Application.Services
 
             var orders = await _orderRepository.GetAllByBuyerIdAsync(user.Uid.ToString());
 
-            return ResultData.Ok(orders.Select(o => new BuyerGetAllOrdersResponse(o)));
+            int number = 0;
+
+            return ResultData.Ok(orders.Select(o => new BuyerGetAllOrdersResponse(++number, o)));
         }
     }
 }
