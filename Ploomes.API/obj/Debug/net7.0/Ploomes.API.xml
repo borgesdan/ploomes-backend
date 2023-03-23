@@ -10,10 +10,39 @@
             </summary>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.BuyerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
-            <summary>Cria um novo usuário com acesso do tipo comprador.</summary>
+             <summary>Cria um novo usuário para acesso somente à compras na plataforma.</summary>
+             <remarks>
+             Exemplo de resposta:
+             <code>
+            {
+              "uid": "B4FCE7CA-35C2-48E3-8B60-3A6DB07BEB99",
+            }
+             </code>
+             </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.BuyerController.CreateOrder(Ploomes.Application.Contracts.BuyerPostCreateOrderRequest)">
-            <summary>Cria um pedido de compra de um produto.</summary>
+             <summary>Cria um novo pedido de compra.</summary>
+             <remarks>
+             Exemplo de resposta:
+             <code>
+            {
+              "orderUid": "A2AE0197-FC59-475D-8AA4-ECAB7B206999",
+            }
+             </code>
+             Retorna somente o identificador do pedido para futura solicitações.
+             </remarks>
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.BuyerController.SetSeller(System.String)">
+             <summary>Define o perfil como vendedor para a plataforma.</summary>
+             <remarks>
+             Exemplo de resposta:
+             <code>
+            {
+              "succeeded": true,
+              "message": 'Usuário verificado como vendedor',
+            }
+            </code>
+             </remarks>
         </member>
         <member name="T:Ploomes.API.Controllers.v1.DefaultController">
             <summary>
@@ -29,9 +58,6 @@
         <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
             <summary>Cria um novo usuário com acesso do tipo vendedor.</summary>
         </member>
-        <member name="M:Ploomes.API.Controllers.v1.SellerController.SetSeller(System.String)">
-            <summary>Define o nível de acesso de um usuário como vendedor.</summary>
-        </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.PublishProduct(Ploomes.Application.Contracts.SellerPostProductRequest)">
             <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
         </member>
@@ -42,10 +68,44 @@
             <summary>Atualiza a visibilidade de um produto para que não seja exibido na plataforma.</summary>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.String)">
-            <summary>Obtém um usuário por seu uid.</summary>
+             <summary>
+             Obtém um usuário por seu uid.
+             </summary>
+             <remarks>
+             Exemplo de resposta:
+             <code>
+            {
+              "succeeded": true,
+              "message": null,
+              "data": {
+                "uid": "A52AF318-BD4F-48F3-ABE6-26F7B13F151D",
+                "email": "user@email.com",
+                "accessLevel": 1,
+                "creationDate": "2023-03-22T21:15:23.748Z",
+                "name": "User Name dos Santos"
+              }
+            }
+             </code>
+             Posteriomente a chamada desse endpoint deve ser restrita para administradores.
+             </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.UserController.Login(Ploomes.Application.Contracts.UserLoginRequest)">
-            <summary>Executa o login no sistema de um usuário cadastrado.</summary>
+             <summary>Executa o login no sistema de um usuário cadastrado.</summary>
+             <remarks>
+             Exemplo de resposta:
+             <code>
+            {
+                 "succeeded": true,
+                 "message": null,
+                 "data": 
+                 {
+                     "token": "eyGhbYcUOiHIUmm1NkjIs7nR56CIpIçpXVjJ9...",
+                     "expiration": "2023-03-22T21:07:36.110Z",
+                 }
+            }
+             </code>
+             No Swagger utilize o token no botão Authorize, iniciando a string com 'bearer': "Bearer eyGhbYcUOiHIUmm1NkjIs7nR56CIpIçpXVjJ9..."
+             </remarks>
         </member>
         <member name="T:Ploomes.API.Extensions.ServiceCollectionJwtExtensions">
             <summary>Extensões para autenticação JWT como serviço.</summary>

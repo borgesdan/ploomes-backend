@@ -1,4 +1,6 @@
-﻿namespace Ploomes.Application.Errors
+﻿using static Ploomes.Application.Errors.AppError;
+
+namespace Ploomes.Application.Errors
 {
     public class AppError
     {
@@ -36,7 +38,9 @@
         }
 
         public class Seller
-        {            
+        {
+            public static ErrorValue CannotBuyHisOwnProduct
+                => new("seller_001", "O vendedor não pode comprar seu próprio produto.");
         }
 
         public class Product

@@ -87,7 +87,7 @@ namespace Ploomes.Application.Services
         }
 
         /// <summary>Define o nível de acesso de um usuário existente como nível de vendedor.</summary>
-        public async Task<IResultData> SetAsSeller(string uid)
+        public async Task<IResultData> SetUserAsSeller(string uid)
         {
             var user = await _userRepository.GetByUidAsync(uid);
 
@@ -100,7 +100,7 @@ namespace Ploomes.Application.Services
             user.AccessLevel = AccessLevelType.Seller;
             await _userRepository.Update(user);
 
-            return ResultData.Ok();
+            return new ResultData(true, "Usuário verificado como vendedor.", HttpStatusCode.OK);
         }
 
         /// <summary>Obtém os dados de um usuário por seu Uid.</summary>
@@ -185,6 +185,6 @@ namespace Ploomes.Application.Services
             };
 
             return ResultData.Ok(response);
-        }
+        }        
     }
 }

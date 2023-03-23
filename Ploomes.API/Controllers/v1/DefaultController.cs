@@ -19,7 +19,7 @@ namespace Ploomes.API.Controllers.v1
 
             var result = new ObjectResult(resultData)
             {
-                StatusCode = (int)resultData.StatusCode
+                StatusCode = (int)resultData.StatusCode()
             };
 
             return result;

@@ -18,9 +18,7 @@ namespace Ploomes.API.Extensions
                 }
 
                 string path = applicationName.Name + ".xml";
-                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, path));
-                //options.OperationFilter<CustomErrorsOperationFilter>(Array.Empty<object>());
-                //options.SchemaFilter<CustomDefinitionSchemaFilter>(Array.Empty<object>());
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, path));                
             });
             return services;
         }

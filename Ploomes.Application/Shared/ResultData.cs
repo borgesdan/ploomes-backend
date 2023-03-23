@@ -6,28 +6,32 @@ namespace Ploomes.Application.Shared
     public interface IResultData
     {
         /// <summary>Obtém se a solicitação foi bem sucedida.</summary>
-        public bool Succeeded { get; }
+        bool Succeeded { get; }
         /// <summary>Obtém uma mensagem do resultado da solicitação.</summary>
-        public string? Message { get; }
+        string? Message { get; }
         /// <summary>Obtém o código de estado da solicitação.</summary>
-        public HttpStatusCode StatusCode { get; }
-
+        HttpStatusCode StatusCode();
         /// <summary>Obtém o conteúdo da resposta pelo tipo especificado.</summary>
-        public TData? GetData<TData>() where TData : class;
+        TData? GetData<TData>() where TData : class;
     }
 
     /// <summary>Representa um retorno do resultado da solicitação de um serviço.</summary>
     public class ResultData : IResultData
     {
+        private HttpStatusCode _statusCode;
         public bool Succeeded { get; set; }
-        public string? Message { get; set; }
-        public HttpStatusCode StatusCode { get; set; }
+        public string? Message { get; set; }        
 
         public ResultData(bool succeeded, string? message, HttpStatusCode statusCode)
         {
             Succeeded = succeeded;
             Message = message;
-            StatusCode = statusCode;
+            _statusCode = statusCode;
+        }
+
+        public HttpStatusCode StatusCode()
+        {
+            return _statusCode;
         }
 
         public virtual T? GetData<T>() where T : class

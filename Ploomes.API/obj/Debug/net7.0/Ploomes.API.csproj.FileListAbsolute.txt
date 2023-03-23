@@ -79,3 +79,4 @@ C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Microsoft.EntityFramew
 C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\System.CodeDom.dll
+C:\dev\tests\ploomes-project\Ploomes.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll

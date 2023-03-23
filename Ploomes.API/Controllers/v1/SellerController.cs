@@ -24,12 +24,7 @@ namespace Ploomes.API.Controllers.v1
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserPostRequest request)
-            => ConvertData(await _userService.CreateAsync(request, AccessLevelType.Seller));
-
-        /// <summary>Define o nível de acesso de um usuário como vendedor.</summary>
-        [HttpPost("asseller/{userId}")]
-        public async Task<IActionResult> SetSeller(string userId)
-            => ConvertData(await _userService.SetAsSeller(userId));
+            => ConvertData(await _userService.CreateAsync(request, AccessLevelType.Seller));        
 
         /// <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
         [HttpPost("product")]

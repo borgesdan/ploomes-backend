@@ -1,4 +1,5 @@
-﻿using Ploomes.Application.Data.Entities.Sql;
+﻿using Ploomes.Application.Attributes;
+using Ploomes.Application.Data.Entities.Sql;
 using Ploomes.Application.Data.Shared;
 
 namespace Ploomes.Application.Contracts
