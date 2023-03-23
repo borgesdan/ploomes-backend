@@ -135,6 +135,7 @@
              Nesse exemplo busca-se 10 produtos na primeira página.
              
              Exemplo de resposta:
+             <code>
             {
               "data": [
                 {
@@ -153,6 +154,7 @@
               "succeeded": true,
               "message": null
             }
+            </code>
              </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
@@ -224,7 +226,7 @@
         </member>
         <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid">
              <summary>
-             Obtém uma afirmativa se o usuário está logado no sistema.
+             Obtém uma afirmativa se o usuário está autenticado no sistema.
              </summary>
              <remarks>        
              Exemplo de resposta:
@@ -241,7 +243,7 @@
               }
             }        
              </code>
-             Você precisa estar logado para utilizar esse endpoint.
+             Você precisa fazer login no sistema para receber uma resposta de sucesso.
              </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.UserController.Login(Ploomes.Application.Contracts.UserLoginRequest)">

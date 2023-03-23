@@ -32,6 +32,7 @@ namespace Ploomes.API.Controllers.v1
         /// Nesse exemplo busca-se 10 produtos na primeira página.
         /// 
         /// Exemplo de resposta:
+        /// <code>
         ///{
         ///  "data": [
         ///    {
@@ -50,6 +51,7 @@ namespace Ploomes.API.Controllers.v1
         ///  "succeeded": true,
         ///  "message": null
         ///}
+        ///</code>
         /// </remarks>
         [HttpPost("all")]
         [AllowAnonymous]
