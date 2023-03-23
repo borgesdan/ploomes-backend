@@ -24,6 +24,16 @@ namespace Ploomes.Application.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
+        public async Task<UserEntity?> GetByEmail(string email, bool includePerson = false)
+        {
+            var query = _context.Users.Where(u => u.Email == email);
+
+            if (includePerson)
+                query = query.Include(u => u.Person);
+
+            return await query.FirstOrDefaultAsync();
+        }
+
         public async Task<UserEntity?> GetByLogin(string email, string password)
             => await _context.Users.Where(u => u.Email == email && u.Password == password).FirstOrDefaultAsync();
 

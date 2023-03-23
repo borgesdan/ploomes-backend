@@ -39,8 +39,7 @@ namespace Ploomes.Application.Services
             var product = new ProductEntity
             {
                 Title = request.Title,
-                Price = request.Price,
-                Discount = request.Discount,
+                Price = request.Price,                
                 Description = request.Description,
                 SellerId = user.Id
             };

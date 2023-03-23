@@ -18,14 +18,7 @@ namespace Ploomes.Application.Repositories
             return order;
         }
 
-        public async Task<IEnumerable<OrderEntity>> GetAllByBuyerIdAsync(int buyerId, bool includeProducts = false)
-        {
-            var query = _context.Orders.Where(o => o.BuyerId == buyerId);
-
-            if (includeProducts)
-                query = query.Include(o => o.Product);
-
-            return await query.ToListAsync();
-        }
+        public async Task<IEnumerable<OrderEntity>> GetAllByBuyerIdAsync(string buyerId)
+            => await _context.Orders.Where(o => o.BuyerUid == new Guid(buyerId)).ToListAsync();
     }
 }

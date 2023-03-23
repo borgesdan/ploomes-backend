@@ -20,14 +20,8 @@ namespace Ploomes.Application.Data.Entities.Sql
 
         [Required]
         [Column(TypeName = "decimal(8, 2)")]
-        public decimal Price { get; set; }
-
-        [Range(0.0, 1.0)]
-        public double Discount { get; set; }
-
-        [Range(0, 9999)]
-        public int Stock { get; set; }
-
+        public decimal Price { get; set; }        
+        
         [Required]
         [StringLength(5000)]
         public string? Description { get; set; }

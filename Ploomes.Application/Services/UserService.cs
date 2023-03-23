@@ -46,7 +46,7 @@ namespace Ploomes.Application.Services
 
             var user = result.GetData<UserEntity>();
 
-            return ResultData.Ok(new UserPostResponse(user));
+            return new ResultData<UserPostResponse>(true, "Novo usuário cadastrado com sucesso!", HttpStatusCode.OK, new UserPostResponse(user));
         }
 
         private async Task<IResultData> CreateTransactionAsync(UserPostRequest request, AccessLevelType accessLevel)
@@ -87,20 +87,20 @@ namespace Ploomes.Application.Services
         }
 
         /// <summary>Define o nível de acesso de um usuário existente como nível de vendedor.</summary>
-        public async Task<IResultData> SetUserAsSeller(string uid)
+        public async Task<IResultData> SetUserAsSeller(string email)
         {
-            var user = await _userRepository.GetByUidAsync(uid);
+            var user = await _userRepository.GetByEmail(email);
 
             if (user == null)
                 return ResultData.Error(AppError.User.NotFound);
 
             if (user.AccessLevel == AccessLevelType.Buyer)
-                return new ResultData(true, null, HttpStatusCode.NoContent);
+                return new ResultData(true, "O usuário já é um vendedor!", HttpStatusCode.OK);
 
             user.AccessLevel = AccessLevelType.Seller;
             await _userRepository.Update(user);
 
-            return new ResultData(true, "Usuário verificado como vendedor.", HttpStatusCode.OK);
+            return new ResultData(true, "O usuário pode vender seus produtos na plataforma.", HttpStatusCode.OK);
         }
 
         /// <summary>Obtém os dados de um usuário por seu Uid.</summary>

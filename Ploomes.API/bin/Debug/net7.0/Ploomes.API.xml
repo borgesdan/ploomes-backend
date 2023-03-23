@@ -12,24 +12,86 @@
         <member name="M:Ploomes.API.Controllers.v1.BuyerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
              <summary>Cria um novo usuário para acesso somente à compras na plataforma.</summary>
              <remarks>
+             Exemplo de requisição:
+             <code>
+            {
+              "userName": "Pedro de Alcântara",
+              "email": "pedro@email.com",
+              "password": "123456@mudar"
+            }
+            </code>
+            
+             Todos os campos são obrigatórios.
+            
              Exemplo de resposta:
              <code>
             {
-              "uid": "B4FCE7CA-35C2-48E3-8B60-3A6DB07BEB99",
+              "data": {
+                "uid": "aa4b0679-c759-41aa-8c92-70329ce4ff0b"
+              },
+              "succeeded": true,
+              "message": '"Novo usuário cadastrado com sucesso!'
             }
              </code>
-             </remarks>
+             Retorna o identificador único do usuário cadastrado para futura solicitações.
+            
+             Ocorrerá erro na requisição caso:
+             <code>
+             1 - Exista um email cadastrado igual ao informado;
+             2 - Alguns dos campos não seja informado.
+             </code>
+             </remarks>        
         </member>
         <member name="M:Ploomes.API.Controllers.v1.BuyerController.CreateOrder(Ploomes.Application.Contracts.BuyerPostCreateOrderRequest)">
              <summary>Cria um novo pedido de compra.</summary>
              <remarks>
+             Exemplo de requisição:
+             <code>
+            {
+              "buyerEmail": "pedro@email.com",
+              "productUid": "D041E5CE-CB99-4FE2-ABF7-069ECE1E746B"
+            }
+             </code>
+             
              Exemplo de resposta:
              <code>
             {
-              "orderUid": "A2AE0197-FC59-475D-8AA4-ECAB7B206999",
+                 "data:{
+                   "orderUid": "A2AE0197-FC59-475D-8AA4-ECAB7B206999"
+                 }
+                 "succeeded": true,
+                 "message: 'Pedido realizado com sucesso!',
             }
              </code>
-             Retorna somente o identificador do pedido para futura solicitações.
+             Retorna somente o identificador do pedido para futura consultas.       
+             </remarks>        
+        </member>
+        <member name="M:Ploomes.API.Controllers.v1.BuyerController.GetAllOrders(System.String)">
+             <summary>Obtém todos os pedidos do comprador ao informar seu email.</summary>
+             <remarks>
+             Exemplo de resposta:
+             <code>
+            {
+              "data": [
+                {
+                  "number": 1,
+                  "orderUid": "4175430a-18ba-4747-8c4f-2d5004f91336",
+                  "productUid": "d041e5ce-cb99-4fe2-abf7-069ece1e746b",
+                  "productTitle": "Calça Masculina Jeans",
+                  "productCount": 1
+                },
+                {
+                  "number": 2,
+                  "orderUid": "e0f7d288-f8fd-423e-8110-c9b0e0978e52",
+                  "productUid": "d041e5ce-cb99-4fe2-abf7-069ece1e746b",
+                  "productTitle": "Bermuda Masculina Alta Estação",
+                  "productCount": 1
+                }
+              ],
+              "succeeded": true,
+              "message": null
+            }
+            </code>
              </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.BuyerController.SetSeller(System.String)">
@@ -42,6 +104,8 @@
               "message": 'Usuário verificado como vendedor',
             }
             </code>
+            
+             Ocorrerá erro caso o usuário não seja encontrado pelo email informado.
              </remarks>
         </member>
         <member name="T:Ploomes.API.Controllers.v1.DefaultController">
@@ -56,7 +120,37 @@
             </summary>        
         </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
-            <summary>Cria um novo usuário com acesso do tipo vendedor.</summary>
+             <summary>Cria um novo usuário para acesso de compra e venda na plataforma.</summary>
+             <remarks>
+             Exemplo de requisição:
+             <code>
+            {
+              "userName": "Maria Elizabete de Alcântara",
+              "email": "maria@email.com",
+              "password": "123456@mudar"
+            }
+            </code>
+            
+             Todos os campos são obrigatórios.
+            
+             Exemplo de resposta:
+             <code>
+            {
+              "data": {
+                "uid": "aa4b0679-c759-41aa-8c92-70329ce4ff0b"
+              },
+              "succeeded": true,
+              "message": null
+            }
+             </code>
+             Retorna o identificador único do usuário cadastrado para futura solicitações.
+            
+             Ocorrerá erro na requisição caso:
+             <code>
+             1 - Exista um email cadastrado igual ao informado;
+             2 - Alguns dos campos não seja informado.
+             </code>
+             </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.PublishProduct(Ploomes.Application.Contracts.SellerPostProductRequest)">
             <summary>Publica um produto ou anúncio de um vendedor na plataforma.</summary>
@@ -71,7 +165,7 @@
              <summary>
              Obtém um usuário por seu uid.
              </summary>
-             <remarks>
+             <remarks>        
              Exemplo de resposta:
              <code>
             {
@@ -84,7 +178,7 @@
                 "creationDate": "2023-03-22T21:15:23.748Z",
                 "name": "User Name dos Santos"
               }
-            }
+            }        
              </code>
              Posteriomente a chamada desse endpoint deve ser restrita para administradores.
              </remarks>
@@ -162,6 +256,42 @@
             <inheritdoc />
         </member>
         <member name="M:Ploomes.API.Migrations.ProductCount.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Ploomes.API.Migrations.Orders">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.Orders.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.Orders.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.Orders.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Ploomes.API.Migrations.Products">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.Products.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.Products.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.Products.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Ploomes.API.Migrations.OrderProductTitle">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.OrderProductTitle.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.OrderProductTitle.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ploomes.API.Migrations.OrderProductTitle.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

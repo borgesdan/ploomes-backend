@@ -20,7 +20,37 @@ namespace Ploomes.API.Controllers.v1
             _sellerService = sellerService;
         }
 
-        /// <summary>Cria um novo usuário com acesso do tipo vendedor.</summary>
+        /// <summary>Cria um novo usuário para acesso de compra e venda na plataforma.</summary>
+        /// <remarks>
+        /// Exemplo de requisição:
+        /// <code>
+        ///{
+        ///  "userName": "Maria Elizabete de Alcântara",
+        ///  "email": "maria@email.com",
+        ///  "password": "123456@mudar"
+        ///}
+        ///</code>
+        ///
+        /// Todos os campos são obrigatórios.
+        ///
+        /// Exemplo de resposta:
+        /// <code>
+        ///{
+        ///  "data": {
+        ///    "uid": "aa4b0679-c759-41aa-8c92-70329ce4ff0b"
+        ///  },
+        ///  "succeeded": true,
+        ///  "message": null
+        ///}
+        /// </code>
+        /// Retorna o identificador único do usuário cadastrado para futura solicitações.
+        ///
+        /// Ocorrerá erro na requisição caso:
+        /// <code>
+        /// 1 - Exista um email cadastrado igual ao informado;
+        /// 2 - Alguns dos campos não seja informado.
+        /// </code>
+        /// </remarks>
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserPostRequest request)

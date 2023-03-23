@@ -23,7 +23,7 @@ namespace Ploomes.API.Controllers.v1
         /// <summary>
         /// Obtém um usuário por seu uid.
         /// </summary>
-        /// <remarks>
+        /// <remarks>        
         /// Exemplo de resposta:
         /// <code>
         ///{
@@ -36,7 +36,7 @@ namespace Ploomes.API.Controllers.v1
         ///    "creationDate": "2023-03-22T21:15:23.748Z",
         ///    "name": "User Name dos Santos"
         ///  }
-        ///}
+        ///}        
         /// </code>
         /// Posteriomente a chamada desse endpoint deve ser restrita para administradores.
         /// </remarks>

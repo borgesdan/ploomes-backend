@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ploomes.Application.Data.Entities.Sql
 {
@@ -11,16 +10,17 @@ namespace Ploomes.Application.Data.Entities.Sql
         [Required]
         public Guid Uid { get; set; }
 
-        [ForeignKey(nameof(Buyer))]
-        public int BuyerId { get; set; }
-        [ForeignKey(nameof(Product))]
-        public int ProductId { get; set; }
+        [Required]
+        public Guid BuyerUid { get; set; }
+
+        [Required]
+        public Guid ProductUid { get; set; }
+
+        [Required]
+        public string? ProductTitle { get; set; }
 
         [Range(1, 999)]
         public int ProductCount { get; set; }
-
-        public virtual UserEntity? Buyer { get; set; }
-        public virtual ProductEntity? Product { get; set; }
 
         public OrderEntity() 
         {
