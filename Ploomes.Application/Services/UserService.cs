@@ -103,10 +103,10 @@ namespace Ploomes.Application.Services
             return new ResultData(true, "O usuário pode vender seus produtos na plataforma.", HttpStatusCode.OK);
         }
 
-        /// <summary>Obtém os dados de um usuário por seu Uid.</summary>
-        public async Task<IResultData> GetByUid(string uid)
+        /// <summary>Obtém os dados de um usuário por seu email.</summary>
+        public async Task<IResultData> GetByEmail(string email)
         {
-            var user = await _userRepository.GetByUidAsync(uid, true);
+            var user = await _userRepository.GetByEmail(email, true);
 
             if (user == null)
                 return ResultData.Error(AppError.User.NotFound);

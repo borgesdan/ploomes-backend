@@ -21,7 +21,7 @@ namespace Ploomes.API.Controllers.v1
         }
 
         /// <summary>
-        /// Obtém um usuário por seu uid.
+        /// Obtém um usuário por seu email.
         /// </summary>
         /// <remarks>        
         /// Exemplo de resposta:
@@ -30,7 +30,7 @@ namespace Ploomes.API.Controllers.v1
         ///  "succeeded": true,
         ///  "message": null,
         ///  "data": {
-        ///    "uid": "A52AF318-BD4F-48F3-ABE6-26F7B13F151D",
+        ///    "uid": "3f400aaa-7dab-4900-98ed-efd28bfa91ad",
         ///    "email": "user@email.com",
         ///    "accessLevel": 1,
         ///    "creationDate": "2023-03-22T21:15:23.748Z",
@@ -38,15 +38,23 @@ namespace Ploomes.API.Controllers.v1
         ///  }
         ///}        
         /// </code>
-        /// Posteriomente a chamada desse endpoint deve ser restrita para administradores.
+        /// Você precisa estar logado para utilizar esse endpoint.
         /// </remarks>
-        [HttpGet("{uid}")]
+        [HttpGet("{userEmail}")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(ResultData<UserGetByUidResponse>))]        
-        public async Task<IActionResult> GetByUid(string uid)
-            => ConvertData(await _userService.GetByUid(uid));
+        public async Task<IActionResult> GetByUid(string userEmail)
+            => ConvertData(await _userService.GetByEmail(userEmail));
 
         /// <summary>Executa o login no sistema de um usuário cadastrado.</summary>
         /// <remarks>
+        /// Exemplo de requisição:
+        /// <code>
+        ///{
+        ///  "email": "string",
+        ///  "password": "string"
+        ///}
+        ///</code>
+        ///
         /// Exemplo de resposta:
         /// <code>
         ///{

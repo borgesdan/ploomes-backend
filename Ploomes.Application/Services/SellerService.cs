@@ -28,7 +28,7 @@ namespace Ploomes.Application.Services
             if(!validation.Validate())
                 return ResultData.Error(validation.Errors.First());
 
-            var user = await _userRepository.GetByUidAsync(request.SellerUid);
+            var user = await _userRepository.GetByEmail(request.SellerEmail);
 
             if (user == null)
                 return ResultData.Error(AppError.User.NotFound.Message);
@@ -50,9 +50,9 @@ namespace Ploomes.Application.Services
         }
 
         /// <summary>Obtém todos os produtos de um vendedor.</summary>
-        public async Task<IResultData> GetAllProductsAsync(string sellerUid)
+        public async Task<IResultData> GetAllProductsAsync(string sellerEmail)
         {
-            var user = await _userRepository.GetByUidAsync(sellerUid);
+            var user = await _userRepository.GetByEmail(sellerEmail);
 
             if (user == null)
                 return ResultData.Error(AppError.User.NotFound.Message);
@@ -69,9 +69,9 @@ namespace Ploomes.Application.Services
         }
 
         /// <summary>Muda a visibilidade de um produto para que não seja exibido na plataforma.</summary>
-        public async Task<IResultData> HideProduct(string sellerUid, string productUid)
+        public async Task<IResultData> HideProduct(SellerPatchHideProduct request)
         {
-            var user = await _userRepository.GetByUidAsync(sellerUid);
+            var user = await _userRepository.GetByEmail(request.SellerEmail);
 
             if (user == null)
                 return ResultData.Error(AppError.User.NotFound.Message);
@@ -79,7 +79,7 @@ namespace Ploomes.Application.Services
             if (!AccessLevelReader.IsSeller(user.AccessLevel))
                 return ResultData.Error(AppError.User.InvalidPermission.Message);
 
-            var product = await _productRepository.GetByUidAsync(productUid);
+            var product = await _productRepository.GetByUidAsync(request.ProductUid);
 
             if (product == null)
                 return ResultData.Error(AppError.Product.NotFound.Message);

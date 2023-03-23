@@ -115,7 +115,7 @@ namespace Ploomes.API.Controllers.v1
         ///}
         ///</code>
         /// </remarks>
-        [HttpGet("{buyerEmail}order/all")]
+        [HttpGet("{buyerEmail}/order/all")]
         [AllowAnonymous]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(BuyerGetAllOrdersResponse))]
         public async Task<IActionResult> GetAllOrders(string buyerEmail)

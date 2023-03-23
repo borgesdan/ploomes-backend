@@ -1,5 +1,4 @@
-﻿using Ploomes.Application.Attributes;
-using Ploomes.Application.Data.Entities.Sql;
+﻿using Ploomes.Application.Data.Entities.Sql;
 using Ploomes.Application.Data.Shared;
 
 namespace Ploomes.Application.Contracts
@@ -8,7 +7,7 @@ namespace Ploomes.Application.Contracts
     {
         public string? Uid { get; set; }
         public string? Email { get; set; }
-        public AccessLevelType AccessLevel { get; set; }
+        public string? AccessLevel { get; set; }
         public DateTime CreationDate { get; set; }
         public string? Name { get; set; }
 
@@ -16,7 +15,7 @@ namespace Ploomes.Application.Contracts
         {
             Uid = entity.Uid.ToString().ToLower();
             Email = entity.Email;
-            AccessLevel = entity.AccessLevel;
+            AccessLevel = entity.AccessLevel == AccessLevelType.Buyer ? "comprador" : "vendedor";
             CreationDate = entity.CreationDate;
             Name = entity.Person.FullName;
         }
