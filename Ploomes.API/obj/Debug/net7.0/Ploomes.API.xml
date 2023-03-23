@@ -127,18 +127,32 @@
              Exemplo de requisição:
              <code>
             {
-              "succeeded": true,
-              "message": null,
-              "data": {
-                "uid": "3f400aaa-7dab-4900-98ed-efd28bfa91ad",
-                "email": "user@email.com",
-                "accessLevel": 1,
-                "creationDate": "2023-03-22T21:15:23.748Z",
-                "name": "User Name dos Santos"
-              }
-            }        
+              "page": 1,
+              "pageSize": 10
+            }   
              </code>
-             Você precisa estar logado para utilizar esse endpoint.
+             
+             Nesse exemplo busca-se 10 produtos na primeira página.
+             
+             Exemplo de resposta:
+            {
+              "data": [
+                {
+                  "uid": "d041e5ce-cb99-4fe2-abf7-069ece1e746b",
+                  "title": "Bermudas masculinas",
+                  "price": 60,
+                  "description": "bermudas masculinas"
+                },
+                {
+                  "uid": "dccb2a96-d3b3-44d8-aede-2fc12612e917",
+                  "title": "Calças masculinas",
+                  "price": 60,
+                  "description": "calças masculinas"
+                }
+              ],
+              "succeeded": true,
+              "message": null
+            }
              </remarks>
         </member>
         <member name="M:Ploomes.API.Controllers.v1.SellerController.Create(Ploomes.Application.Contracts.UserPostRequest)">
@@ -208,9 +222,9 @@
              O usuário precisar ter o status de vendedor na plataforma.
              </remarks>
         </member>
-        <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid(System.String)">
+        <member name="M:Ploomes.API.Controllers.v1.UserController.GetByUid">
              <summary>
-             Obtém um usuário por seu email.
+             Obtém uma afirmativa se o usuário está logado no sistema.
              </summary>
              <remarks>        
              Exemplo de resposta:

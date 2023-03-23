@@ -5,6 +5,7 @@ using Ploomes.Application.Services;
 using Ploomes.Application.Shared;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
+using System.Security.Claims;
 
 namespace Ploomes.API.Controllers.v1
 {
@@ -21,7 +22,7 @@ namespace Ploomes.API.Controllers.v1
         }
 
         /// <summary>
-        /// Obtém um usuário por seu email.
+        /// Obtém uma afirmativa se o usuário está autenticado no sistema.
         /// </summary>
         /// <remarks>        
         /// Exemplo de resposta:
@@ -38,12 +39,20 @@ namespace Ploomes.API.Controllers.v1
         ///  }
         ///}        
         /// </code>
-        /// Você precisa estar logado para utilizar esse endpoint.
+        /// Você precisa fazer login no sistema para receber uma resposta de sucesso.
         /// </remarks>
-        [HttpGet("{userEmail}")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(ResultData<UserGetByUidResponse>))]        
-        public async Task<IActionResult> GetByUid(string userEmail)
-            => ConvertData(await _userService.GetByEmail(userEmail));
+        [HttpGet("status")]
+        [AllowAnonymous]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(ResultData<UserGetByUidResponse>))]
+        public async Task<IActionResult> GetByUid()
+        {
+            var userUid = User.Claims.FirstOrDefault((Claim x) => x.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (userUid == null)
+                return ConvertData(ResultData.Error("Usuário não está logado."));
+
+            return ConvertData(await _userService.Get(userUid));
+        }            
 
         /// <summary>Executa o login no sistema de um usuário cadastrado.</summary>
         /// <remarks>
