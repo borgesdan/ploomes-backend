@@ -182,6 +182,7 @@ namespace Ploomes.Application.Services
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiration = expiration,
+                ExpirationLongDate = $"{expiration.ToLongDateString()}, {expiration.ToLongTimeString()}, (UTC)",
             };
 
             return ResultData.Ok(response);
