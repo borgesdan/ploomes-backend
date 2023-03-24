@@ -8,7 +8,7 @@
         public void Sanitize()
         {
             Page = ((Page <= 0) ? 1 : Page);
-            PageSize = ((PageSize <= 0) ? 10 : PageSize);
+            PageSize = ((PageSize <= 0) ? 30 : PageSize);
         }
     }
 }

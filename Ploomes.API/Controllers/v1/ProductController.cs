@@ -29,6 +29,7 @@ namespace Ploomes.API.Controllers.v1
         ///}   
         /// </code>
         /// 
+        /// No mínimo 1 na página e no máximo 30 em pageSize.
         /// Nesse exemplo busca-se 10 produtos na primeira página.
         /// 
         /// Exemplo de resposta:

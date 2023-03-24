@@ -94,7 +94,7 @@ namespace Ploomes.Application.Services
             if (user == null)
                 return ResultData.Error(AppError.User.NotFound);
 
-            if (user.AccessLevel == AccessLevelType.Buyer)
+            if (user.AccessLevel == AccessLevelType.Seller)
                 return new ResultData(true, "O usuário já é um vendedor!", HttpStatusCode.OK);
 
             user.AccessLevel = AccessLevelType.Seller;

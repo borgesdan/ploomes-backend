@@ -15,6 +15,8 @@ namespace Ploomes.Application.Services
 
         public async Task<IResultData> GetAll(ProductGetAllFilterRequest request)
         {
+            request.Sanitize();
+
             var products = await _productRepository.GetAllAsync(request.Page, request.PageSize);
 
             return ResultData.Ok(products.Select(p => new ProductResponse(p)));

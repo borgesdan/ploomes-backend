@@ -12,6 +12,7 @@ namespace Ploomes.Application.Data.Context
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
