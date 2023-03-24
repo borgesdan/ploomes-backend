@@ -137,7 +137,5 @@ namespace Ploomes.API.Controllers.v1
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(ResultData))]
         public async Task<IActionResult> SetSeller(string buyerEmail)
             => ConvertData(await _userService.SetUserAsSeller(buyerEmail));
-
-
     }
 }

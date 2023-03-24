@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
-        configuration.GetConnectionString("local"),
+        configuration.GetConnectionString("default"),
         //Como requisitado pelo Package Manager Console
         b => b.MigrationsAssembly(assemblyName.Name)));
 
