@@ -7,7 +7,7 @@ com possibilidade de login do usuário cadastrado.
 
 ### 📋 Objetivo
 
-API para teste prático requisitado pela empresa Ploomes. Desenvolvido em C#m com acesso a um
+API para teste prático requisitado pela empresa Ploomes. Desenvolvido em C# com acesso a um
 banco de dados SQL Server e hospedada na [Azure](https://webazureploomes.azurewebsites.net/swagger/index.html).
 
 ## 🛠️ Construído com
